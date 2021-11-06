@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";//The require_once keyword is used to embed PHP code from another file. If the file is not found, a fatal error is thrown and the program stops. If the file was already included previously, this statement will not include it again.
-$username = $password = $confirm_password = $phone = $address = $city = $state = $pin = "";//new empty variables 
+$username = $password = $confirm_password = $phone = $address = $city = $state = $pin = $fullname = $age = $gender = "";//new empty variables 
 $username_err = $password_err = $confirm_password_err = $err = "";//new variable 
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
@@ -36,48 +36,79 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
     }
     mysqli_stmt_close($stmt);
 //check for address
-    if(empty(trim($_POST['address']))){//collect the value of password and if it is empty
+    if(empty(trim($_POST['address']))){//collect the value of address and if it is empty show
       $err = "Address cant be blank";
-      echo "Address cant be blank";
+      echo "Address cannot be blank";
   }
   else{
-    $address = trim($_POST['address']);//input the password after clearing white spaces
+    $address = trim($_POST['address']);//input the address after clearing white spaces
 }
 
 //check for phone
-if(empty(trim($_POST['phone']))){//collect the value of password and if it is empty
+if(empty(trim($_POST['phone']))){//collect the value of phone no and if it is empty
   $err = "phone cant be blank";
-  echo "phone cant be blank";
+  echo "phone cannot be blank";
 }
 else{
-$phone = trim($_POST['phone']);//input the password after clearing white spaces
+$phone = trim($_POST['phone']);//input the phone after clearing white spaces
 }
 
 //check for city
-if(empty(trim($_POST['city']))){//collect the value of password and if it is empty
+if(empty(trim($_POST['city']))){//collect the value of city and if it is empty
   $err = "city cant be blank";
-  echo "city cant be blank";
+  echo "city cannot be blank";
 }
 else{
-$city = trim($_POST['city']);//input the password after clearing white spaces
+$city = trim($_POST['city']);//input the city after clearing white spaces
 }
 
 //check for state
-if(($_POST['state']) == "Choose..."){//collect the value of password and if it is empty
+if(($_POST['state']) == "Choose..."){//collect the value of state and if it is empty
   $err = "state cant be blank";
-  echo "state cant be blank";
+  echo "state cannot be blank";
 }
 else{
-$state = trim($_POST['state']);//input the password after clearing white spaces
+$state = trim($_POST['state']);//input the state after clearing white spaces
 }
 
 //check for pin
-if(empty(trim($_POST['pin']))){//collect the value of password and if it is empty
-  $err = "pin cant be blank";
-  echo "pin code cant be blank";
+if(empty(trim($_POST['pin']))){//collect the value of pin code and if it is empty
+  $err = "pin can't be blank";
+  echo "pin code can't be blank";
 }
 else{
-$pin = trim($_POST['pin']);//input the password after clearing white spaces
+$pin = trim($_POST['pin']);//input the pin code after clearing white spaces
+}
+
+//check for fullname
+if(empty(trim($_POST['fullname']))){//collect the value of pin code and if it is empty
+  $err = "fullname can't be blank";
+  echo "fullname can't be blank";
+}
+else{
+$fullname = trim($_POST['fullname']);//input the pin code after clearing white spaces
+}
+
+//check for gender
+if(($_POST['gender']) == "Choose..."){//collect the value of state and if it is empty
+  $err = "gender cant be blank";
+  echo "gender cannot be blank";
+}
+else{
+$gender = trim($_POST['gender']);//input the state after clearing white spaces
+}
+
+if(empty(trim($_POST['age']))){//collect the value of pin code and if it is empty
+  $err = "age can't be blank";
+  echo "age can't be blank";
+}
+elseif((trim($_POST['age'])) < 16)
+{
+  $err = "age cannot be less than 16";
+  echo "age cannot be less than 16";
+}
+else{
+$age = trim($_POST['age']);//input the pin code after clearing white spaces
 }
 
 //check for password
@@ -88,6 +119,18 @@ if(empty(trim($_POST['password']))){//collect the value of password and if it is
 elseif(strlen(trim($_POST['password'])) < 5){//if the password is not empty but less than 5 char
     $password_err = "Password cannot be less tahan 5 chars";
     echo "Password cannot be less tahan 5 chars";
+}
+elseif(!preg_match("#[0-9]+#",$password)) {//preg match finds the first match in the string
+  $passwordErr = "Your Password Must Contain At Least 1 Number!";
+  echo "Your Password Must Contain At Least 1 Number!";
+}
+elseif(!preg_match("#[A-Z]+#",$password)) {
+  $passwordErr = "Your Password Must Contain At Least 1 Capital Letter!";
+  echo "Your Password Must Contain At Least 1 Capital Letter!";
+}
+elseif(!preg_match("#[a-z]+#",$password)) {
+  $passwordErr = "Your Password Must Contain At Least 1 Lowercase Letter!";
+  echo "Your Password Must Contain At Least 1 Lowercase Letter!";
 }
 else{
     $password = trim($_POST['password']);//input the password after clearing white spaces
@@ -102,18 +145,22 @@ if(trim($_POST['password']) != trim($_POST['confirm_password'])){//if the confir
 //if there were no errors, go ahead and insert into the database
 if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($err))//no errors were there
 {
-    $sql = "INSERT INTO users (username,phone ,address, city, state,pin, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, address, gender,phone , fullname, age, city, state ,pin, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     if($stmt)
     {
-        mysqli_stmt_bind_param($stmt, "sssssss",$param_username ,$param_phone ,$param_address ,$param_city ,$param_state ,$param_pin, $param_password);//to create two new parameter to store string
+        mysqli_stmt_bind_param($stmt, "ssssssssss" ,$param_username ,$param_address, $param_gender, $param_phone, $param_fullname ,$param_age ,$param_city ,$param_state ,$param_pin, $param_password);//to create two new parameter to store string
         //set these parameters
+        
         $param_username = $username;
+        $param_address = $address;
+        $param_gender = $gender;
         $param_phone = $phone;
+        $param_fullname = $fullname;
+        $param_age = $age;
         $param_city = $city;
         $param_state = $state;
         $param_pin = $pin;
-        $param_address = $address;
         $param_password = password_hash($password, PASSWORD_DEFAULT);//to hash the password using by default algorithm
         //try to execute the query
         if(mysqli_stmt_execute($stmt))//if the execution is successful got to login.php
@@ -180,6 +227,23 @@ mysqli_close($conn);
       <input type="email" class="form-control" name="username" id="inputEmail4" placeholder="Email" required>
     </div>
     <div class="form-group col-md-6">
+    <label for="inputname">Full Name</label>
+    <input type="text" class="form-control" id="inputname" name="fullname" placeholder="JOHN WATSON" required>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputage">Age</label>
+    <input type="text" class="form-control" id="inputage" name="age" placeholder="12" required>
+  </div>
+  <div class="form-group col-md-4">
+      <label for="inputgender">Gender</label>
+      <select id="inputgender" name="gender" class="form-control">
+        <option selected>Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
     <label for="inputPhone">Phone No.</label>
     <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="12345 67890" pattern="[0-9]{5} [0-9]{5}" required>
   </div>
@@ -229,7 +293,7 @@ mysqli_close($conn);
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip">Pin Code</label>
-      <input type="text" class="form-control" name="pin" id="inputZip">
+      <input type="text" class="form-control" name="pin" id="inputZip" title="must contain a valid pin code">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
@@ -239,7 +303,7 @@ mysqli_close($conn);
   <div class="form-group col-md-6">
       <label for="inputPassword4">Confirm Password</label> 
       <input type="password" class="form-control" name ="confirm_password" id="inputPassword" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" 
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+      title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>

@@ -81,24 +81,24 @@ $pin = trim($_POST['pin']);//input the pin code after clearing white spaces
 }
 
 //check for fullname
-if(empty(trim($_POST['fullname']))){//collect the value of pin code and if it is empty
+if(empty(trim($_POST['fullname']))){//collect the value of full name and if it is empty
   $err = "fullname can't be blank";
   echo "fullname can't be blank";
 }
 else{
-$fullname = trim($_POST['fullname']);//input the pin code after clearing white spaces
+$fullname = trim($_POST['fullname']);//input the fullname after clearing white spaces
 }
 
 //check for gender
-if(($_POST['gender']) == "Choose..."){//collect the value of state and if it is empty
+if(($_POST['gender']) == "Choose..."){//collect the value of gender and if it is empty
   $err = "gender cant be blank";
   echo "gender cannot be blank";
 }
 else{
-$gender = trim($_POST['gender']);//input the state after clearing white spaces
+$gender = trim($_POST['gender']);//input the gender after clearing white spaces
 }
 
-if(empty(trim($_POST['age']))){//collect the value of pin code and if it is empty
+if(empty(trim($_POST['age']))){//collect the value of age and if it is empty
   $err = "age can't be blank";
   echo "age can't be blank";
 }
@@ -108,7 +108,7 @@ elseif((trim($_POST['age'])) < 16)
   echo "age cannot be less than 16";
 }
 else{
-$age = trim($_POST['age']);//input the pin code after clearing white spaces
+$age = trim($_POST['age']);//input the age after clearing white spaces
 }
 
 //check for password
@@ -118,19 +118,19 @@ if(empty(trim($_POST['password']))){//collect the value of password and if it is
 }
 elseif(strlen(trim($_POST['password'])) < 5){//if the password is not empty but less than 5 char
     $password_err = "Password cannot be less tahan 5 chars";
-    echo "Password cannot be less tahan 5 chars";
+    echo "Password cannot be less than 5 chars";
 }
-elseif(!preg_match("#[0-9]+#",$password)) {//preg match finds the first match in the string
-  $passwordErr = "Your Password Must Contain At Least 1 Number!";
-  echo "Your Password Must Contain At Least 1 Number!";
+elseif(!preg_match('@[0-9]@', $_POST['password'])){
+  $password_err = "Password should have 1 number in it";
+    echo "Password should have 1 number in it";
 }
-elseif(!preg_match("#[A-Z]+#",$password)) {
-  $passwordErr = "Your Password Must Contain At Least 1 Capital Letter!";
-  echo "Your Password Must Contain At Least 1 Capital Letter!";
+elseif(!preg_match('@[A-Z]@', $_POST['password'])){
+  $password_err = "Password should have atleast one uppercase letter in it";
+    echo "Password should have atleast one uppercase letter in it";
 }
-elseif(!preg_match("#[a-z]+#",$password)) {
-  $passwordErr = "Your Password Must Contain At Least 1 Lowercase Letter!";
-  echo "Your Password Must Contain At Least 1 Lowercase Letter!";
+elseif(!preg_match('@[a-z]@', $_POST['password'])){
+  $password_err = "Password should have atleast one lowercase letter in it";
+    echo "Password should have atleast one lowercase letter in it";
 }
 else{
     $password = trim($_POST['password']);//input the password after clearing white spaces

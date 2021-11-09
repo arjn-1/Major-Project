@@ -7,7 +7,7 @@ if (!isset($_SESSION["username"])) {
 }
 
 include 'config.php';
-include 'welcome.php';
+// include 'welcome.php';
      
 if (isset($_POST["update"])) {//when the update button is clicked
     $fullname = mysqli_real_escape_string($conn, $_POST["fullname"]);
@@ -53,20 +53,24 @@ if (isset($_POST["update"])) {//when the update button is clicked
    <body>
        <center>
            <h1>Update Profile</h1>
+           <hr>
            <form action="" method="POST">
                <!-- <input type="text" name="username" value="<?php echo $_SESSION['username']; ?>" required><br> -->
-               <input type="text" name="fullname" placeholder="Enter new name or old name" required><br>
-               <input type="text" name="phone" placeholder="Enter new phone no. or old phone no." pattern="[0-9]{5} [0-9]{5}" required><br>
-               <input type="text" name="age" placeholder="Enter new age" required><br>
+               <input type="text" name="fullname" placeholder="Update name" required><br>
+               <input type="text" name="phone" placeholder="Update phone number" pattern="[0-9]{5} [0-9]{5}" required><br>
+               <input type="text" name="age" placeholder="Update age"  required><br>
                <input type="text" name="address" placeholder="Enter the address" ><br>
                <input type="text" name="city" placeholder="Enter the city" ><br>
                <input type="text" name="state" placeholder="Enter the state"><br>
                <input type="text" name="pin" placeholder="Enter the pin code"><br>
 
-               <input type="submit" name="update" value="UPDATE DATA">
+               <input type="submit" name="update" value="UPDATE DATA"><br>
+               <a href="welcome.php">back</a>
 
            </form>
        </center>
    </body>
 </html>
+
+
 

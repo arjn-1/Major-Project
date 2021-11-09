@@ -48,8 +48,8 @@ $user_pin = $result['pin'];
         
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
                     <!-- <input type="submit" name="back_btn" value="Back" href="welcome.php"> -->
-                <br><br> <a href="Profile_update.php">Update Information</a><br><br>
-                    <a href="welcome.php">back</a>
+                <br><br> <a class="styling" href="Profile_update.php"><strong>Update Information</strong></a><br><br>
+                    <a class="styling" href="welcome.php"><strong>back</strong></a>
                     
                 </form>
             </p>

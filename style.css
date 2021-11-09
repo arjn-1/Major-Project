@@ -1,0 +1,101 @@
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+  
+  /* Style the submit button */
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  /* Style the container for inputs */
+  .container {
+    background-image: linear-gradient(to right bottom, #ff3535e3, #3a0096c9);
+    border-radius: 10px;
+    padding: 20px;
+}
+  
+  /* The message box is shown when the user clicks on the password field */
+  #message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+    content: "\2713";
+  }
+  
+  /* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+    content: "\2713";
+  }
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    position:sticky;
+    height: 60px;
+    top: 0;
+    /* background-color: rgb(177, 177, 177); */
+    box-shadow: 2px 2px 15px rgb(241, 6, 65);
+    padding: 0px 5%;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+}
+.navbar ul li a{
+    margin: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    position:relative;
+    transition: all .5s ease;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    float: right;
+}
+/* .navbar ul li a:hover{
+    color: #181818;
+} */
+div#navbarNavDropdown {
+  padding-left: 65%;
+}
+.navbar {
+  --bs-bg-opacity: 1;
+  background-color: #ff4383;
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+}

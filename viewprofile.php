@@ -36,7 +36,7 @@ $user_pin = $result['pin'];
         <div id="profile">
             <!-- <center> -->
             <h1><strong>User Information : </strong></h1><hr><br><br>
-            
+            <p class="name"><strong>Email: </strong><?php echo $user_username; ?></p><br><br>
             <p class="name"><strong>Name: </strong><?php echo $user_fullname; ?></p><br><br>
             <p class="name"><strong>Phone: </strong><?php echo $user_phone; ?></p><br><br>
             <p class="name"><strong>Age: </strong><?php echo $user_age; ?></p><br><br>

@@ -33,14 +33,15 @@ $user_pin = $result['pin'];
     <body>
         <div id="profile">
             
-            <p>Name: <?php echo $user_fullname; ?></p>
-            <p>Phone: <?php echo $user_phone; ?></p>
-            <p>Age: <?php echo $user_age; ?></p>
-            <p>Gender: <?php echo $user_gender; ?></p>
-            <p>Address: <?php echo $user_address; ?></p>
-            <p>City: <?php echo $user_city; ?></p>
-            <p>State: <?php echo $user_state; ?></p>
-            <p>Pin Code: <?php echo $user_pin; ?></p>
+            <p class="name">Name: <?php echo $user_fullname; ?></p>
+            <p class="name">Phone: <?php echo $user_phone; ?></p>
+            <p class="name">Phone: <?php echo $user_phone; ?></p>
+            <p class="name">Age: <?php echo $user_age; ?></p>
+            <p class="name">Gender: <?php echo $user_gender; ?></p>
+            <p class="name">Address: <?php echo $user_address; ?></p>
+            <p class="name">City: <?php echo $user_city; ?></p>
+            <p class="name">State: <?php echo $user_state; ?></p>
+            <p class="name">Pin Code: <?php echo $user_pin; ?></p>
         
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
                     <!-- <input type="submit" name="back_btn" value="welcome.php" /> -->

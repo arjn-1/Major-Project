@@ -1,6 +1,9 @@
 <?php
-require_once("welcome.php");
-require_once("config.php");
+session_start();
+//require_once("welcome.php");//
+require_once("config.php");//Here the connection file i included so that it can be used in this current page.
+
+
 ?>
 
 <?php
@@ -22,31 +25,35 @@ $user_pin = $result['pin'];
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>User Profile</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="css/form.css" />   
+        <link rel="stylesheet" type="text/css" href="name.css" />   
     </head>
     <body>
         <div id="profile">
+            <!-- <center> -->
+            <h1><strong>User Information : </strong></h1><hr><br><br>
             
-            <p>Name: <?php echo $user_fullname; ?></p>
-            <p>Phone: <?php echo $user_phone; ?></p>
-            <p>Phone: <?php echo $user_phone; ?></p>
-            <p>Age: <?php echo $user_age; ?></p>
-            <p>Gender: <?php echo $user_gender; ?></p>
-            <p>Address: <?php echo $user_address; ?></p>
-            <p>City: <?php echo $user_city; ?></p>
-            <p>State: <?php echo $user_state; ?></p>
-            <p>Pin Code: <?php echo $user_pin; ?></p>
+            <p class="name"><strong>Name: </strong><?php echo $user_fullname; ?></p><br><br>
+            <p class="name"><strong>Phone: </strong><?php echo $user_phone; ?></p><br><br>
+            <p class="name"><strong>Age: </strong><?php echo $user_age; ?></p><br><br>
+            <p class="name"><strong>Gender: </strong><?php echo $user_gender; ?></p><br><br>
+            <p class="name"><strong>Address:</strong> <?php echo $user_address; ?></p><br><br>
+            <p class="name"><strong>City: </strong><?php echo $user_city; ?></p><br><br>
+            <p class="name"><strong>State: </strong><?php echo $user_state; ?></p><br><br>
+            <p class="name"><strong>Pin Code: </strong><?php echo $user_pin; ?></p><br><br>
         
                 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-                    <!-- <input type="submit" name="back_btn" value="welcome.php" /> -->
+                    <!-- <input type="submit" name="back_btn" value="Back" href="welcome.php"> -->
+                <br><br> <a href="Profile_update.php">Update Information</a><br><br>
+                    <a href="welcome.php">back</a>
+                    
                 </form>
             </p>
+<!-- </center> -->
         </div>
     </body>
 </html>

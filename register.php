@@ -1,4 +1,5 @@
 <?php
+//Here the connection file i included so that it can be used in this current page.
 require_once "config.php";//The require_once keyword is used to embed PHP code from another file. If the file is not found, a fatal error is thrown and the program stops. If the file was already included previously, this statement will not include it again.
 $username = $password = $confirm_password = $phone = $address = $city = $state = $pin = $fullname = $age = $gender = "";//new empty variables 
 $username_err = $password_err = $confirm_password_err = $err = "";//new variable 
@@ -7,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
     //check if username is empty
     if(empty(trim($_POST["username"]))){//after removing white space from both side of the string to check if it is empty
         $username_err = "username cannot be blank";
-        echo "username cannot be blank";
+        echo "<script>alert('email cannot be blank')</script>";
     }
     else{
         $sql = "SELECT id FROM users WHERE username = ?";
@@ -23,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
              mysqli_stmt_store_result($stmt);//stores the result
                 if(mysqli_stmt_num_rows($stmt) == 1){//if that username matches to one in the table 
                     $username_err = "This username is already taken";
-                    echo "This username is already taken";
+                    echo "<script>alert('This Email is already taken')</script>";
                 }
                 else{
                     $username = trim($_POST['username']);//store that name clearing the white spaces from the string
@@ -38,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
 //check for address
     if(empty(trim($_POST['address']))){//collect the value of address and if it is empty show
       $err = "Address cant be blank";
-      echo "Address cannot be blank";
+      echo "<script>alert('Address cannot be blank')</script>";
   }
   else{
     $address = trim($_POST['address']);//input the address after clearing white spaces
@@ -47,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){// collect the value of input field
 //check for phone
 if(empty(trim($_POST['phone']))){//collect the value of phone no and if it is empty
   $err = "phone cant be blank";
-  echo "phone cannot be blank";
+  echo "<script>alert('Phone number cannot be blank')</script>";
 }
 else{
 $phone = trim($_POST['phone']);//input the phone after clearing white spaces
@@ -56,7 +57,7 @@ $phone = trim($_POST['phone']);//input the phone after clearing white spaces
 //check for city
 if(empty(trim($_POST['city']))){//collect the value of city and if it is empty
   $err = "city cant be blank";
-  echo "city cannot be blank";
+  echo "<script>alert('city cannot be blank')</script>";
 }
 else{
 $city = trim($_POST['city']);//input the city after clearing white spaces
@@ -65,7 +66,7 @@ $city = trim($_POST['city']);//input the city after clearing white spaces
 //check for state
 if(($_POST['state']) == "Choose..."){//collect the value of state and if it is empty
   $err = "state cant be blank";
-  echo "state cannot be blank";
+  echo "<script>alert('state cannot be blank')</script>";
 }
 else{
 $state = trim($_POST['state']);//input the state after clearing white spaces
@@ -74,7 +75,7 @@ $state = trim($_POST['state']);//input the state after clearing white spaces
 //check for pin
 if(empty(trim($_POST['pin']))){//collect the value of pin code and if it is empty
   $err = "pin can't be blank";
-  echo "pin code can't be blank";
+  echo "<script>alert('pin cannot be blank')</script>";
 }
 else{
 $pin = trim($_POST['pin']);//input the pin code after clearing white spaces
@@ -83,7 +84,7 @@ $pin = trim($_POST['pin']);//input the pin code after clearing white spaces
 //check for fullname
 if(empty(trim($_POST['fullname']))){//collect the value of full name and if it is empty
   $err = "fullname can't be blank";
-  echo "fullname can't be blank";
+  echo "<script>alert('Fullname cannot be blank')</script>";
 }
 else{
 $fullname = trim($_POST['fullname']);//input the fullname after clearing white spaces
@@ -92,7 +93,7 @@ $fullname = trim($_POST['fullname']);//input the fullname after clearing white s
 //check for gender
 if(($_POST['gender']) == "Choose..."){//collect the value of gender and if it is empty
   $err = "gender cant be blank";
-  echo "gender cannot be blank";
+  echo "<script>alert('gender cant be blank')</script>";
 }
 else{
 $gender = trim($_POST['gender']);//input the gender after clearing white spaces
@@ -100,12 +101,7 @@ $gender = trim($_POST['gender']);//input the gender after clearing white spaces
 
 if(empty(trim($_POST['age']))){//collect the value of age and if it is empty
   $err = "age can't be blank";
-  echo "age can't be blank";
-}
-elseif((trim($_POST['age'])) < 16)
-{
-  $err = "age cannot be less than 16";
-  echo "age cannot be less than 16";
+  echo "<script>alert('age cannot be blank')</script>";
 }
 else{
 $age = trim($_POST['age']);//input the age after clearing white spaces
@@ -114,23 +110,23 @@ $age = trim($_POST['age']);//input the age after clearing white spaces
 //check for password
 if(empty(trim($_POST['password']))){//collect the value of password and if it is empty
     $password_err = "Password cant be blank";
-    echo "Password cant be blank";
+    echo "<script>alert('Password cannot be blank')</script>";
 }
 elseif(strlen(trim($_POST['password'])) < 5){//if the password is not empty but less than 5 char
     $password_err = "Password cannot be less tahan 5 chars";
-    echo "Password cannot be less than 5 chars";
+    echo "<script>alert('Password cannot be less than 5 characters')</script>";
 }
-elseif(!preg_match('@[0-9]@', $_POST['password'])){
+elseif(!preg_match('@[0-9]@', $_POST['password'])){//The preg_match() function returns whether a match was found in a string
   $password_err = "Password should have 1 number in it";
-    echo "Password should have 1 number in it";
+    echo "<script>alert('Password should have 1 number in it')</script>";
 }
 elseif(!preg_match('@[A-Z]@', $_POST['password'])){
   $password_err = "Password should have atleast one uppercase letter in it";
-    echo "Password should have atleast one uppercase letter in it";
+    echo "<script>alert('Password should have 1 uppercase letter in it')</script>";
 }
 elseif(!preg_match('@[a-z]@', $_POST['password'])){
   $password_err = "Password should have atleast one lowercase letter in it";
-    echo "Password should have atleast one lowercase letter in it";
+    echo "<script>alert('Password should have 1 lowercase letter in it')</script>";
 }
 else{
     $password = trim($_POST['password']);//input the password after clearing white spaces
@@ -139,7 +135,7 @@ else{
 //check for confirm passsword
 if(trim($_POST['password']) != trim($_POST['confirm_password'])){//if the confirm password and password does not match
     $password_err = "Passwords should match";
-    echo "Passwords do not match";
+    echo "<script>alert('Password should match')</script>";
 }
 
 //if there were no errors, go ahead and insert into the database
@@ -228,11 +224,11 @@ mysqli_close($conn);
     </div>
     <div class="form-group col-md-6">
     <label for="inputname">Full Name</label>
-    <input type="text" class="form-control" id="inputname" name="fullname" placeholder="JOHN WATSON" required>
+    <input type="text" class="form-control" id="inputname" name="fullname" placeholder="Your Name" required>
   </div>
   <div class="form-group col-md-6">
     <label for="inputage">Age</label>
-    <input type="text" class="form-control" id="inputage" name="age" placeholder="12" required>
+    <input type="text" class="form-control" id="inputage" name="age" required>
   </div>
   <div class="form-group col-md-4">
       <label for="inputgender">Gender</label>
@@ -306,7 +302,7 @@ mysqli_close($conn);
       title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-primary">Register</button>
 </form>
 </div>
 <div id="message" class="container mb-4">

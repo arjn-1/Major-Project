@@ -37,8 +37,9 @@ if (isset($_POST["update"])) {//when the update button is clicked
        <title>Updation of profile</title>
        <style>
            body{
-               background-color: white;        
+               background-color: #7dd1c2;        
            }
+           
            input{
                width: 40%;
                height: 5%;

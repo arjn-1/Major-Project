@@ -40,6 +40,11 @@ if (isset($_POST["update"])) {//when the update button is clicked
                background-color: #7dd1c2;        
            }
            
+           .back{
+               color: white;
+               font-size: large;
+           }
+           
            input{
                width: 40%;
                height: 5%;
@@ -66,7 +71,7 @@ if (isset($_POST["update"])) {//when the update button is clicked
                <input type="text" name="pin" placeholder="Enter the pin code"><br>
 
                <input type="submit" name="update" value="UPDATE DATA"><br>
-               <a href="welcome.php">back</a>
+               <a class="back" href="welcome.php"><strong>back</strong></a>
 
            </form>
        </center>

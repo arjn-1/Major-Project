@@ -1,0 +1,16 @@
+h1{
+    font-family: cursive;
+}
+.name{
+    position: absolute;
+    left: 1%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    background-color: #7dd1c2;
+}
+.styling{
+    color: white;
+  font-size: large;
+}

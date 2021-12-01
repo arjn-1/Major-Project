@@ -41,8 +41,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)//if our sessi
         <ul class="mainMenu">
             <li><a href="viewprofile.php">View your Profile</a></li>
             <li><a href="Profile_update.php">Update your Profile</a></li>
-            
-            <li><a href="#">View your posts</a></li>
+            <li><a href="addpost.php">Add Posts</a></li>
+            <li><a href="viewpost.php">View your posts</a></li>
             <li><a href="logout.php">Logout</a></li>
             
             <div class="closeMenu"><i class="fa fa-times"></i></div>
@@ -60,7 +60,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)//if our sessi
         </label>
         
         <ul>
-          <li><a class="active" href="#style">ADD Post</a></li>
+          <li><a class="active" href="addpost.php">ADD Post</a></li>
+          <li><a class="active" href="viewpost.php">VIEW Your Posts</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#Feedback">Feedback</a></li>

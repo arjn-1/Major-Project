@@ -50,6 +50,16 @@ nav .logo {
     font-size: 25px;
     cursor: pointer;
 }
+
+.hello2{
+    font-family: cursive;
+}
+
+#profile{
+    font-family: cursive;
+    background-color: black;
+    color:white;
+}
 @media(min-width: 136px){
     nav .mainMenu {
         height: 100vh;
@@ -84,4 +94,20 @@ nav .logo {
         display: inline-block;
         padding: 12px;
     }
+}
+.styling4{
+    position: absolute;
+    margin-top: 0px;
+    color:black;
+    font-family: cursive;
+    
+    text-shadow: violet;
+}
+.styling4:hover{
+    background-color: black;
+    color:white;
+}
+.myname{
+    border-color: white;
+    border-width: 2px;
 }

@@ -7,18 +7,27 @@
                 font-size: large;
             }
             body{
-                background-color: #7dd1c2;
-                /* background-image: linear-gradient(to right bottom, #ff3535e3, #3a0096c9,#ff3535e3 ); */
+                background-color: #ff3535e3;
             }
+           
         </style>
         <title>User Profile</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="name.css" />   
+        <link rel="stylesheet" type="text/css" href="name.css" />  
+        <link rel="stylesheet" href="style2.css"> 
     </head>
     <body>
         <div id="profile">
+            <br>
+
             <!-- <center> -->
-            <h1><strong>Uploaded Posts : </strong></h1><hr><br><br>
+            <h1><strong>Uploaded Posts : </strong></h1>
+            <br>
+            <hr class="myname">
+            
+            
+        </div>
+        <br><br>
         
 
 
@@ -33,12 +42,14 @@ if($total != 0){
      
     ?>
 
-    <table>
+    <table class="hello2">
         <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Image</th>
+            <th class="hello3"> Name    </th>
+
+            <th class="hello3"> Description    </th>
+            <th class="hello3"> Image    </th>
         </tr>
+    
     
 
 <?php
@@ -58,11 +69,13 @@ else{
 
 ?>
 </table>
+<br><br><br><br>
 
-<a class="styling" href="welcome.php">back</a>
-<a class="styling" href="addpost.php">To Add New Post</a>
+<a class="styling4" href="welcome.php">back</a>
+<br><br>
+<a class="styling4" href="addpost.php">To Add New Post</a>
 
-</div>
+
         </body>
             </html>
 
